@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#Usuario#paginaPrincipal.xhtml"
+    NAME="output" PATH="/Usuario/paginaPrincipal.xhtml"
+    TARGET="rules:#Usuario#paginaPrincipal.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="erro::#index.xhtml" NAME="output1"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="erro" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="adm::#Municipio-Jsf#IndexMunicipio.xhtml"
+    NAME="output2" PATH="/Municipio-Jsf/IndexMunicipio.xhtml"
+    TARGET="rules:#Municipio-Jsf#IndexMunicipio.xhtml" TITLE="adm" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="logout::#index.xhtml" NAME="output3"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="logout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Usuario#paginaPrincipal.xhtml"
+  PATH="/Usuario/paginaPrincipal.xhtml" SHAPE="32,273,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Municipio-Jsf#IndexMunicipio.xhtml"
+  PATH="/Municipio-Jsf/IndexMunicipio.xhtml" SHAPE="32,385,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

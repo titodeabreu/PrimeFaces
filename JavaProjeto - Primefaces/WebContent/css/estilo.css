@@ -1,0 +1,70 @@
+#body {
+	margin: auto;
+	overflow:scroll;
+	position:relative;
+	width:100%;
+	background-image: url(../imagem/back.jpg);
+	background-size: cover;
+	padding: 10px 12px;
+	border:2px solid #CCCCCC;
+	border-top:none;
+	border-bottom:none;
+	color: black;
+	min-width:600px;max-width:1000px;
+
+}
+
+#header {
+max-width: 970px;
+width: 100%;
+height: 72px;
+float: none;
+margin: auto;
+padding-top: 1cm;
+position: relative;
+
+}
+
+
+#corpo {
+	color: black;
+    padding-left: 5.8cm;
+    padding-top: 2cm;
+    padding-bottom: 2cm;
+    padding-right: 5.8cm;
+    width:90%;
+    margin: auto;
+}
+
+#panel{
+border: 0;
+color: #4f4f4f;
+background: none;
+padding: 0cm;
+border: 0cm;
+}
+
+
+
+form {
+  color: black;
+  border : 1px #000;
+  border-width: 5px;
+  width: 100%;
+  padding : 5px;
+}
+
+
+#rodape {
+	max-width: 970px;
+	float: none;
+	padding-top: 0cm;
+    background: url(../imagem/rodape2.png);
+    width: 100%;
+    height: 100px;
+    margin-top: 50px;
+    padding: 10px;
+    text-align: center;
+    margin-left: 1cm;
+    background-repeat: no-repeat;
+}

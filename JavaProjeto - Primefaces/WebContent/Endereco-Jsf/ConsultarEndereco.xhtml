@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body> 
+<f:view>
+	<h:form>
+	<h:panelGrid columns="4">
+		
+			<f:facet name="header">
+				<h:outputText value="Consulta de Endereço" />
+			</f:facet>
+			
+			<h:outputLabel id="idEnderecoLabel" value="IdEndereco:"
+				for="idEnderecoCampo" />
+			<h:panelGroup>
+				<h:inputText id="idEnderecoCampo"
+					value="#{enderecoBean.endereco.idEndereco}" size="10"
+					maxlength="10" required="true"
+					requiredMessage="Idenfificador obrigatório."
+					converterMessage="Identificador deve ser um valor numérico.">
+					<f:converter converterId="javax.faces.Integer" />
+				</h:inputText>
+				<h:message for="idEnderecoCampo" showSummary="true"
+					showDetail="false" />
+			</h:panelGroup>
+			
+			<h:commandButton id="consultar" value="Consultar"
+				actionListener="#{enderecoBean.consult}" type="submit" />
+				
+			<h:commandButton id="limpar" value="Limpar" type="reset" />
+			
+		</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<h:outputText value="Id do endereco: "
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="#{enderecoBean.endereco.idEndereco}"
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="Bairro: "
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="#{enderecoBean.endereco.bairro}"
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="Logradouro: "
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="#{enderecoBean.endereco.logradouro} "
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="Complemento: "
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="#{enderecoBean.endereco.complemento} "
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="CEP: "
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="#{enderecoBean.endereco.cep} "
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="Nome do Municipio: "
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+				<h:outputText value="#{enderecoBean.endereco.municipio.nomeMunicipio }"
+					rendered="#{enderecoBean.endereco.idEndereco != null}" />
+			</h:panelGrid>
+			
+	
+
+		<h:outputLink value="../index.xhtml">
+			<h:outputText value="Voltar" />
+		</h:outputLink>
+	</h:form>
+	<h:messages layout="table" errorStyle="color: red"
+	infoStyle="color: green" warnStyle="color: orange"
+	fatalStyle="color: gray" showDetail="false" />
+</f:view>
+</body> 
+</html>
