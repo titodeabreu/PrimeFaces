@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body> 
+<f:view>
+	<h:form>
+		<h:panelGrid columns="1">
+			<f:facet name="header">
+				<h:outputText value="Listagem de Endereço" />
+			</f:facet>
+			<h:commandButton id="list" value="Lista Todos os Endereço da base"
+				actionListener="#{enderecoBean.listAlls}" />
+		</h:panelGrid>
+		
+		<h:dataTable var="end" value="#{enderecoBean.listagem}" border="1"
+			width="100%">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Id do Endereço" />
+				</f:facet>
+				<h:outputText value="#{end.idEndereco}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Logradouro do Endereço" />
+				</f:facet>
+				<h:outputText value="#{end.logradouro}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Complemento do Endereço" />
+				</f:facet>
+				<h:outputText value="#{end.complemento} " />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Bairro do Endereço" />
+				</f:facet>
+				<h:outputText value="#{end.bairro} " />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Cep do Endereço" />
+				</f:facet>
+				<h:outputText value="#{end.cep} " />
+			</h:column>
+			
+					
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Municipio do Endereço" />
+				</f:facet>
+				<h:outputText value="#{end.municipio.nomeMunicipio} " />
+			</h:column>
+			
+		</h:dataTable>
+		
+		<h:outputLink value="../index.jsp">
+			<h:outputText value="Voltar" />
+		</h:outputLink>
+	</h:form>
+	<h:messages layout="table" errorStyle="color: red"
+	infoStyle="color: green" warnStyle="color: orange"
+	fatalStyle="color: gray" showDetail="false" />
+</f:view>
+</body> 
+</html>

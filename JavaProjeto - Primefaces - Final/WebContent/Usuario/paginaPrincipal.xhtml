@@ -1,0 +1,57 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css" />
+</h:head>
+
+<h:body id="body"> 
+
+
+	<div id="header">
+		<img src="../imagem/logo2.png" alt="logo" height="46" width="190" />
+		<h:form>
+			<p:menubar  style="font-size: 15;font-family: monospace;margin-top: 15;">
+				<p:menuitem value="#{acessoBean.email}" url="../Usuario/paginaPrincipal.xhtml"/>
+				<p:submenu label="Chat" >  
+					<p:menuitem value="Enviar Convite"
+					icon="ui-icon-contact" >
+				</p:menuitem>
+				<p:menuitem value="Mensagem"
+					icon="ui-icon-document" >
+				</p:menuitem>
+			</p:submenu>
+					<p:submenu label="perfil" icon="ui-icon-gear">  
+					<p:menuitem value="Editar Perfil"
+					icon="ui-icon-pencil" url="../Usuario/EditarPerfil.xhtml">
+				</p:menuitem>
+				
+			</p:submenu>
+		<f:facet name="options">  
+            <p:commandButton type="submit" action="#{acessoBean.logout}" onclick="window.open('../index.xhtml');window.close()" ajax="false" value="Logout" icon="ui-icon-extlink" style="font-size: 12;font-family: monospace;margin-top: 15;float: right;"/>  
+        </f:facet> 
+			</p:menubar>
+			
+		</h:form>
+	</div>
+
+<div id="corpo">
+	<h:form>
+	
+	<p:growl id="growl" showDetail="true" sticky="false" life="2000" />
+			<div style="width: 600;padding-top: 100px;">
+			<p:panel header="Bem vindo ao Projeto de Chat de TALP"
+						style=" text-align:center; color: black;  border:background ;font-size: 15;display: center;padding: 10;font-family: monospace;background: #2F365E -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));">
+				</p:panel>
+		</div>
+		
+	</h:form>
+</div>	
+</h:body> 
+<div id="rodape">
+</div>
+</h:html>
+			

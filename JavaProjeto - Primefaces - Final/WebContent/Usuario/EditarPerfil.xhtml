@@ -1,0 +1,218 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css" />
+</h:head>
+
+
+<h:body id="body">
+
+	<div id="header">
+		<img src="../imagem/logo2.png" alt="logo" height="46" width="190" />
+		<h:form>
+			<p:menubar  style="font-size: 15;font-family: monospace;margin-top: 15;">
+				<p:menuitem value="#{acessoBean.email}" url="../Usuario/paginaPrincipal.xhtml"/>
+				<p:submenu label="Chat" >  
+					<p:menuitem value="Enviar Convite"
+					icon="ui-icon-contact" >
+				</p:menuitem>
+				<p:menuitem value="Mensagem"
+					icon="ui-icon-document" >
+				</p:menuitem>
+			</p:submenu>
+					<p:submenu label="perfil" icon="ui-icon-gear">  
+					<p:menuitem value="Editar Perfil"
+					icon="ui-icon-pencil" url="../Usuario/EditarPerfil.xhtml">
+				</p:menuitem>
+				
+			</p:submenu>
+		<f:facet name="options">  
+            <p:commandButton type="submit" action="#{acessoBean.logout}" onclick="window.open('../index.xhtml');window.close()" ajax="false" value="Logout" icon="ui-icon-extlink" style="font-size: 12;font-family: monospace;margin-top: 15;float: right;"/>  
+        </f:facet> 
+			</p:menubar>
+			
+		</h:form>
+	</div>
+
+		<div id="corpo">
+
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="false" life="5000" />
+
+
+
+			<div style="width: 500;text-align: left;">
+				<p:panel header="Cadastro - Usuario"
+					style=" border:background ;display: center;padding: 10;font-family: monospace;background: #2F365E -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));">
+
+					<h:panelGrid columns="2">
+
+						<p:outputLabel id="idEnderecoLabel" value="Id End:"
+							for="idEnderecoCampo" />
+						<h:panelGroup>
+
+							<p:inputText id="idEnderecoCampo" 
+								value="#{cadastrarBean.endereco.idEndereco}" size="1"
+								maxlength="2" required="true"
+								requiredMessage="ID Endereço - Obrigatório"
+								>
+							</p:inputText>
+
+						</h:panelGroup>
+
+						<p:outputLabel id="LogradouroLabel" value="Lograd:"
+							for="LogradouroCampo" />
+						<h:panelGroup>
+							<p:inputText id="LogradouroCampo"
+								value="#{cadastrarBean.endereco.logradouro}" size="30"
+								maxlength="50" required="true"
+								requiredMessage="Logradouro - Obrigatório" />
+						</h:panelGroup>
+
+						<p:outputLabel id="ComplementoLabel" value="Complemto.:"
+							for="ComplementoCampo" />
+						<h:panelGroup>
+							<p:inputText id="ComplementoCampo"
+								value="#{cadastrarBean.endereco.complemento}" size="30"
+								maxlength="20" required="true"
+								requiredMessage="Complemento - Obrigatório" />
+						</h:panelGroup>
+
+						<p:outputLabel id="BairroLabel" value="Bairro:" for="BairroCampo" />
+						<h:panelGroup>
+							<p:inputText id="BairroCampo"
+								value="#{cadastrarBean.endereco.bairro}" size="30"
+								maxlength="40" required="true"
+								requiredMessage="Bairro - Obrigatório" />
+						</h:panelGroup>
+
+
+
+						<p:outputLabel id="CepLabel" value="CEP:" for="CepCampo" />
+						<h:panelGroup>
+							<p:inputMask id="CepCampo" mask="99999-999" value="#{cadastrarBean.endereco.cep}"
+								size="10" maxlength="7" required="true"
+								requiredMessage="CEP - Obrigatório" />
+
+						</h:panelGroup>
+
+						<p:outputLabel id="MunicipioLabel" value="Município:" />
+						<h:panelGroup>
+							<h:selectOneMenu value="#{cadastrarBean.idMun}">
+								<f:selectItems value="#{municipioBean.listAll()}" var="listMun"
+									itemValue="#{listMun.idMunicipio}"
+									itemLabel="#{listMun.nomeMunicipio}" />
+							</h:selectOneMenu>
+						</h:panelGroup>
+
+
+					</h:panelGrid>
+					<h:panelGrid columns="2">
+
+
+
+						<p:outputLabel id="idPessoaLabel" value="Id Pessoa: "
+							for="idPessoaCampo" />
+						<h:panelGroup>
+
+							<p:inputText id="idPessoaCampo"
+								value="#{cadastrarBean.pessoa.idPessoa}" size="1"
+								maxlength="2" required="true"
+								requiredMessage="ID Pessoa - Obrigatório">
+							</p:inputText>
+
+						</h:panelGroup>
+
+						<p:outputLabel id="EmailLabel" value="Email: " for="EmailCampo" />
+						<h:panelGroup>
+							<p:inputText id="EmailCampo" value="#{cadastrarBean.acesso.email}"
+								size="30" maxlength="40" required="true"
+								requiredMessage="E-mail - Obrigatório" />
+						</h:panelGroup>
+
+						
+							<p:outputLabel for="pwd1" value="Senha:" />
+							<h:panelGroup>
+							<p:password id="pwd1" value="#{cadastrarBean.acesso.senha}"
+								match="pwd2" label="Password 1" required="true" />
+							</h:panelGroup>
+							<p:outputLabel for="pwd2" value="Conf. Senha:" />
+							<h:panelGroup>
+							<p:password id="pwd2"
+								label="Password 2" required="true" />
+							</h:panelGroup>
+
+						<p:outputLabel id="NomeLabel" value="Nome: " for="NomeCampo" />
+						<h:panelGroup>
+							<p:inputText id="NomeCampo" value="#{cadastrarBean.pessoa.nome}"
+								size="30" maxlength="40" required="true"
+								requiredMessage="Nome - Obrigatório" />
+						</h:panelGroup>
+
+						<p:outputLabel id="TelefoneLabel" value="Telefone: "
+							for="TelefoneCampo" />
+						<h:panelGroup>
+							<p:inputMask id="TelefoneCampo" mask="(99)9999-9999"
+								value="#{cadastrarBean.pessoa.telefone}" size="20"
+								maxlength="12" required="true"
+								requiredMessage="Telefone - Obrigatório" />
+
+						</h:panelGroup>
+
+						<p:outputLabel id="DataNascimentoLabel" value="Dt. Nasc:"
+							for="DataNascimentoCampo" />
+						<h:panelGroup>
+							<p:inputMask id="DataNascimentoCampo"
+								mask="99/99/9999"
+								value="#{cadastrarBean.dateConvert}" size="20" maxlength="40"
+								required="true" requiredMessage="Dt. Nascimento - Obrigatório" />
+						</h:panelGroup>
+
+
+
+						<p:outputLabel id="RgLabel" value="Rg: " for="RgCampo" />
+						<h:panelGroup>
+							<p:inputText id="RgCampo" value="#{cadastrarBean.pessoa.rg}"
+								size="20" maxlength="10" required="true"
+								requiredMessage="RG - Obrigatório" />
+						</h:panelGroup>
+
+
+						<p:outputLabel id="OrgaoExpedicaoLabel" value="Orgao Exp:"
+							for="OrgaoExpedicaoCampo" />
+						<h:panelGroup>
+							<p:inputText id="OrgaoExpedicaoCampo"
+								value="#{cadastrarBean.pessoa.orgaoExpedicao}" size="20"
+								maxlength="5" required="true"
+								requiredMessage="Orgao Exp - Obrigatório" />
+						</h:panelGroup>
+
+						<p:outputLabel id="CpfLabel" value="Cpf: " for="CpfCampo" />
+						<h:panelGroup>
+							<p:inputMask id="CpfCampo" mask="999.999.999-99" value="#{cadastrarBean.pessoa.cpf}"
+								size="20" maxlength="12" required="true"
+								requiredMessage="CPF - Obrigatório" />
+						</h:panelGroup>
+
+
+
+
+					</h:panelGrid>
+
+				</p:panel>
+			</div>
+			<div style="padding-left: 170; margin-top: 25;">
+				<p:commandButton value="Editar"
+					actionListener="#{cadastrarBean.alter}" type="submit"
+					ajax="false" onclick="window.open('../index.xhtml');window.close()"
+					style="font-size: 18;font-family: monospace;margin-top: 15;" />
+			</div>
+		</h:form>
+	</div>
+	<div id="rodape"></div>
+</h:body>
+</h:html>

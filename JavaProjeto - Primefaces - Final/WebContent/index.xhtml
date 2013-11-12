@@ -1,0 +1,75 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+</h:head>
+
+<h:body id="body">
+
+
+	<div id="header">
+		<img src="imagem/logo2.png" alt="logo" height="46" width="190" />
+	</div>
+
+
+	<div id="corpo">
+		<h:form>
+
+			<p:growl id="growl" showDetail="true" sticky="false" life="2000"  />
+			<div style="width: 500;">
+				<p:panel header="Bem vindo"
+					style="color: black;  border:background ;font-size: 15;display: center;padding: 10;font-family: monospace;background: #2F365E -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));">
+					<p:outputLabel style="color: black;"> - Lunes@ Project</p:outputLabel>
+				</p:panel>
+
+				<div style="width: 300; margin-left: 110; margin-top: 50">
+					<p:panel header="Acesso ao Sistema:"
+						style="color: black;  border:background ;font-size: 15;display: center;margin-top: 20;font-family: monospace;background: #2F365E -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));">
+
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
+
+
+							<h:outputLabel id="emailCampo" value="Email: " for="emailCampo" />
+							<h:panelGroup>
+
+								<p:inputText id="email" value="#{acessoBean.email}" size="20"
+									maxlength="40" required="true"
+									requiredMessage="Insira Login."
+									style=" border:1px solid gray">
+								</p:inputText>
+							</h:panelGroup>
+							<h:outputLabel id="senhaCampo" value="Senha: " for="senhaCampo" />
+							<h:panelGroup>
+
+								<p:password  id="senha" value="#{acessoBean.senha}" size="20"
+									maxlength="35" required="true"
+									requiredMessage="Insira senha"
+									style=" border:1px solid gray">
+									<f:converter converterId="javax.faces.Integer" />
+								</p:password >
+
+							</h:panelGroup>
+						</h:panelGrid>
+
+					</p:panel>
+
+				</div>
+			</div>
+			<div style="padding-left: 160;">
+				<p:commandButton id="login" value="Entrar"
+					action="#{acessoBean.validaLogin}" type="submit" update="growl"
+					style="font-size: 15;font-family: monospace;margin-top: 15;" />
+				<p:button value="Cadastrar" update="growl"
+					onclick="window.open('CadastrarUser/Cadastro.xhtml');window.close()"
+					style="font-size: 15;font-family: monospace;margin-top: 15;" />
+			</div>
+		</h:form>
+	</div>
+</h:body>
+<div id="rodape"></div>
+</h:html>

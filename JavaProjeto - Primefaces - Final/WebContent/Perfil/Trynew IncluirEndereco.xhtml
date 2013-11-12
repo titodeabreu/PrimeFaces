@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      > 
+
+<h:head></h:head> 
+<body> 
+<f:view>
+	<h:form>
+	<h:messages layout="table" errorStyle="color: red"
+		infoStyle="color: green" warnStyle="color: orange"
+		fatalStyle="color: gray" showDetail="true" />
+		<h:panelGrid columns="2">
+			
+			<f:facet name="header">
+				<h:outputText value="Inclusão de Endereço" />
+			</f:facet>
+			
+			<h:outputLabel id="idEnderecoLabel" value="IdEndereco: "
+				for="idEnderecoCampo" />
+			<h:panelGroup>
+			
+				<h:inputText id="idEnderecoCampo"
+					value="#{enderecoBean.endereco.idEndereco}" size="10"
+					maxlength="10" required="true"
+					requiredMessage="Idenfificador obrigatório."
+					converterMessage="Identificador deve ser um valor numérico.">
+					<f:converter converterId="javax.faces.Integer" />
+				</h:inputText>
+				
+				<h:message for="idEnderecoCampo" showSummary="true" showDetail="true" />	
+			</h:panelGroup>
+			
+			<h:outputLabel id="LogradouroLabel" value="Logradouro: " for="LogradouroCampo" />
+			<h:panelGroup>
+				<h:inputText id="LogradouroCampo"
+					value="#{enderecoBean.endereco.logradouro}" size="40"
+					maxlength="40" required="true"
+					requiredMessage="O nome é obrigatório." />
+				<h:message for="LogradouroCampo" showSummary="true" showDetail="false" />
+			</h:panelGroup>
+			
+			<h:outputLabel id="ComplementoLabel" value="Complemento: " for="ComplementoCampo" />
+			<h:panelGroup>
+				<h:inputText id="ComplementoCampo"
+					value="#{enderecoBean.endereco.complemento}" size="40"
+					maxlength="40" required="true"
+					requiredMessage="O nome é obrigatório." />
+				<h:message for="ComplementoCampo" showSummary="true" showDetail="false" />
+			</h:panelGroup>
+			
+			<h:outputLabel id="BairroLabel" value="Bairro: " for="BairroCampo" />
+			<h:panelGroup>
+				<h:inputText id="BairroCampo"
+					value="#{enderecoBean.endereco.bairro}" size="40"
+					maxlength="40" required="true"
+					requiredMessage="O nome é obrigatório." />
+				<h:message for="BairroCampo" showSummary="true" showDetail="false" />
+			</h:panelGroup>
+			
+		
+			
+			<h:outputLabel id="CepLabel" value="CEP: " for="CepCampo" />
+			<h:panelGroup>
+				<h:inputText id="CepCampo"
+					value="#{enderecoBean.endereco.cep}" size="40"
+					maxlength="40" required="true"
+					requiredMessage="O nome é obrigatório." />
+				<h:message for="CepCampo" showSummary="true" showDetail="false" />
+			</h:panelGroup>
+
+
+				<h:panelGroup>
+					<h:selectOneMenu value="#{enderecoBean.idMun}">
+						<f:selectItems value="#{municipioBean.listAll()}" var="listMun" itemValue="#{listMun.idMunicipio}"  itemLabel="#{listMun.nomeMunicipio}" />
+						
+					</h:selectOneMenu>
+				</h:panelGroup>
+
+				<h:commandButton id="incluir" value="Incluir"
+				actionListener="#{enderecoBean.include}" type="submit" />
+			<h:commandButton id="limpar" value="Limpar" type="reset" />
+		</h:panelGrid>
+		<h:outputLink value="index.xhtml">
+			<h:outputText value="Voltar" />
+		</h:outputLink>
+	</h:form>
+	<h:messages layout="table" errorStyle="color: red"
+		infoStyle="color: green" warnStyle="color: orange"
+		fatalStyle="color: gray" showDetail="false" />
+</f:view>
+</body> 
+</html>

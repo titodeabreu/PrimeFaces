@@ -1,0 +1,139 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css" />
+</h:head>
+
+
+<h:body id="body">
+
+	<div id="header">
+		<img src="../imagem/logo2.png" alt="logo" height="46" width="190" />
+		<h:form>
+			<p:menubar  style="font-size: 15;font-family: monospace;margin-top: 15;">
+				<p:menuitem value="Município"  url="../Municipio-Jsf/IndexMunicipio.xhtml" />
+				<p:menuitem value="Incluir"
+					url="../Municipio-Jsf/IncluirMunicipio.xhtml"
+					icon="ui-icon-document" />
+				<p:menuitem value="Consultar"
+					url="../Municipio-Jsf/ConsultarMunicipio.xhtml"
+					icon="ui-icon-search" />
+				<p:menuitem value="Editar"
+					url="../Municipio-Jsf/EditarMunicipio.xhtml" icon="ui-icon-pencil" />
+				<p:menuitem value="Listar Todos"
+					url="../Municipio-Jsf/listarMunicipio.xhtml" icon="ui-icon-contact"
+					 />
+				<p:menuitem value="Excluir"
+					url="../Municipio-Jsf/ExcluirMunicipio.xhtml" icon="ui-icon-close" />
+		<f:facet name="options">  
+            <p:commandButton type="submit" action="#{acessoBean.logout}" onclick="window.open('../index.xhtml');window.close()" ajax="false" value="Logout" icon="ui-icon-extlink" style="font-size: 12;font-family: monospace;margin-top: 15;float: right;"/>  
+        </f:facet> 
+			</p:menubar>
+			
+		</h:form>
+	</div>
+	
+
+	<div id="corpo">
+		<h:form>
+<p:growl id="growl" showDetail="true" sticky="false" life="2000" />
+			<div style="width: 500;">
+				<p:panel header="Inclusão de Município"
+					style=" border:background ;display: center;padding: 10;font-family: monospace;background: #2F365E -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));">
+
+
+
+
+					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+
+						<p:outputLabel id="idMunicipioLabel" value="Id Mun:"
+							for="idMunicipioCampo" />
+						<h:panelGroup>
+
+							<p:inputText id="idMunicipioCampo" 
+								value="#{municipioBean.municipio.idMunicipio}" size="1"
+								maxlength="2" required="true"
+								requiredMessage="ID Municipio -  Obrigatório"
+								style=" border:1px solid gray">
+							</p:inputText>
+
+
+						</h:panelGroup>
+						
+						<p:outputLabel id="NomeLabel" value="Nome:" for="NomeCampo" />
+						<h:panelGroup>
+							<p:inputText id="NomeCampo"
+								value="#{municipioBean.municipio.nomeMunicipio}" size="30"
+								maxlength="40" required="true"
+								requiredMessage="Nome -  Obrigatório"
+								style=" border:1px solid gray" />
+						</h:panelGroup>
+
+
+
+						<p:outputLabel id="UFLabel" value="UF: " for="UFCampo" />
+						<h:panelGroup>
+							<h:selectOneMenu id="UFCampo"
+								value="#{municipioBean.municipio.ufMunicipio}" required="true" >
+								<f:selectItem itemValue="AC" itemLabel="AC - Acre" />
+								<f:selectItem itemValue="AL" itemLabel="AL - Alagoas" />
+								<f:selectItem itemValue="AP" itemLabel="AP - Amapá" />
+								<f:selectItem itemValue="AM" itemLabel="AM - Amazonas" />
+								<f:selectItem itemValue="BA" itemLabel="BA - Bahia" />
+								<f:selectItem itemValue="CE" itemLabel="CE - Ceará" />
+								<f:selectItem itemValue="DF" itemLabel="DF - Distrito Federal" />
+								<f:selectItem itemValue="ES" itemLabel="ES - Espírito Santo" />
+								<f:selectItem itemValue="GO" itemLabel="GO - Goiás" />
+								<f:selectItem itemValue="MA" itemLabel="MA - Maranhão" />
+								<f:selectItem itemValue="MT" itemLabel="MT - Mato Grosso" />
+								<f:selectItem itemValue="MS" itemLabel="MS - Mato Grosso do Sul" />
+								<f:selectItem itemValue="MG" itemLabel="MG - Minas Gerais" />
+								<f:selectItem itemValue="PA" itemLabel="PA - Paraná" />
+								<f:selectItem itemValue="PB" itemLabel="PB - Paraíba" />
+								<f:selectItem itemValue="PE" itemLabel="PE - Pernanbuco" />
+								<f:selectItem itemValue="PI" itemLabel="PI - Piauí" />
+								<f:selectItem itemValue="RJ" itemLabel="RJ - Rio de Janeiro" />
+								<f:selectItem itemValue="RN"
+									itemLabel="RN - Rio Grande do Norte" />
+								<f:selectItem itemValue="RS" itemLabel="RS - Rio Grande do Sul" />
+								<f:selectItem itemValue="RO" itemLabel="RO - Rondonia" />
+								<f:selectItem itemValue="RR" itemLabel="RR - Roraima" />
+								<f:selectItem itemValue="SC" itemLabel="SC - Santa Catarina" />
+								<f:selectItem itemValue="SP" itemLabel="SP - São Paulo" />
+								<f:selectItem itemValue="SE" itemLabel="SE - Sergipe" />
+								<f:selectItem itemValue="TO" itemLabel="TO - Tocantins" />
+							</h:selectOneMenu>
+
+							<h:graphicImage value="/imagem/bandeira.png" width="22"
+								height="16" />
+
+						</h:panelGroup>
+
+					</h:panelGrid>
+					
+				</p:panel>
+			</div>
+
+
+<div style="padding-left: 150;">
+			<p:commandButton value="Incluir"
+				actionListener="#{municipioBean.include}" type="submit"
+				update="growl"
+				style="font-size: 15;font-family: monospace;margin-top: 15;" />
+			<p:commandButton id="limpar" value="Limpar" type="reset"
+				style="font-size: 15;font-family: monospace;margin-top: 15;" />
+		</div>
+		</h:form>
+		
+	</div>
+	
+	
+	<div id="rodape">
+</div>
+</h:body>
+
+</h:html>

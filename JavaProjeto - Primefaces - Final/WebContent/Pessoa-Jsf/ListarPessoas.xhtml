@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body> 
+<f:view>
+	<h:form>
+		<h:panelGrid columns="1">
+			<f:facet name="header">
+				<h:outputText value="Listagem de Usuários" />
+			</f:facet>
+			<h:commandButton id="list" value="Lista Todos os Usuários Cadastrados no sistema"
+				actionListener="#{pessoaBean.listAlls}" />
+		</h:panelGrid>
+		
+		<h:dataTable var="pes" value="#{pessoaBean.listagem}" border="1"
+			width="100%">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Id da Pessoa" />
+				</f:facet>
+				<h:outputText value="#{pes.idPessoa}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data de Nascimento" />
+				</f:facet>
+				<h:outputText value="#{pes.dataNascimento}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Telefone" />
+				</f:facet>
+				<h:outputText value="#{pes.telefone} " />
+			</h:column>
+			
+					
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Endereço" />
+				</f:facet>
+				<h:outputText value="#{pes.endereco.logradouro} " />
+			</h:column>
+			
+		</h:dataTable>
+		
+		<h:outputLink value="../index.jsp">
+			<h:outputText value="Voltar" />
+		</h:outputLink>
+	</h:form>
+	<h:messages layout="table" errorStyle="color: red"
+	infoStyle="color: green" warnStyle="color: orange"
+	fatalStyle="color: gray" showDetail="false" />
+</f:view>
+</body> 
+</html>
